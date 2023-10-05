@@ -1,7 +1,7 @@
 ---
 title: 'Community ecology - Computer lab III - AB332'
 author: "Ramiro Logares (ICM) and Anders K. Krabberød (UiO)"
-date: "October 2022"
+date: "October 2023"
 output: html_notebook
 ---
 
@@ -35,7 +35,7 @@ load("AB332_lab_II.RData")
 The aim is to investigate how the environmental variation may explain community variance.  
 **Read table with environmental data**:
 ```{r}
-isa.metadata<-read_tsv("https://raw.githubusercontent.com/krabberod/UNIS_AB332_2022/main/computer_lab/data/AB332metadata_v3.txt")
+isa.metadata<-read_tsv("https://raw.githubusercontent.com/krabberod/UNIS_AB332_2023/main/computer_lab/data/AB332metadata_v3.txt")
 isa.metadata
 isa.metadata <- column_to_rownames(isa.metadata, var = "Sample_Name")
 ```

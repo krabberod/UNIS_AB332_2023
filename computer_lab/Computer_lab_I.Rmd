@@ -3,9 +3,8 @@ title: "Community ecology - Computer lab I - AB332"
 author: "Ramiro Logares (ICM) and Anders K. Krabberød (UiO)"
 date: "October 2023"
 output:
+  html_notebook: default
   pdf_document: default
-  html_document:
-    df_print: paged
 ---
 
 >This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
@@ -18,7 +17,7 @@ output:
 >The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
 
 
-It's time for you to try and do the same analysis as was shown in the lecture but using a different dataset:
+It's time for you to try and do the same analysis as was shown in the lecture but using a different dataset: 
 Make sure you have installed all packages!
 
 ### Load Packages
