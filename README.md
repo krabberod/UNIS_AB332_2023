@@ -14,7 +14,7 @@ The R-scripts for the Computer lab are [here](computer_lab/).
 |               | 14:00-16:00 | Clustering and denoising                         | Anders K. Krabberød |
 |               | 16:00-17:00 | [Introduction to R](Introduction_to_R)           | Anders K. Krabberød |
 |               |             |                                                  |                     |
-| **Wednesday** | 09:00-12:00 | [Computer lab I (continued)](computer_lab/)      | Anders K. Krabberød |
+| **Wednesday** | 09:00-12:00 | [Computer lab I](computer_lab/)      | Anders K. Krabberød |
 |               | 12:00-13:00 | _Lunch break_                                    |                     |
 |               | 13:00-15:00 | Metabarcoding examples                           | Ramiro Logares      |
 |               | 15:00-17:00 | [Computer lab II](computer_lab/)                 | Anders K. Krabberød |
