@@ -1,10 +1,10 @@
 ---
 title: " Community ecology - Computer lab II - AB332"
-author: "Ramiro Logares (ICM), and Anders K. Krabberød (UiO)"
+author: "Anders K. Krabberød (UiO) and Ramiro Logares (ICM)"
 date: "October 2023"
 output:
-  html_notebook: default
   pdf_document: default
+  html_notebook: default
 ---
 # Computer lab II
 
@@ -13,10 +13,7 @@ First load the necessary packages.
 library(vegan)
 library(tidyverse)
 library(PCAtools)
-library(mixOmics)
-library(ape)
 library(recluster)
-library(dendextend)
 ```
 
 Now load the the data from the previous lab (change path to the file if necessary):

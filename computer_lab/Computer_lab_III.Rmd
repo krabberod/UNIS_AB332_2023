@@ -1,26 +1,21 @@
 ---
 title: 'Community ecology - Computer lab III - AB332'
-author: "Ramiro Logares (ICM) and Anders K. Krabberød (UiO)"
+author: "Anders K. Krabberød (UiO) and Ramiro Logares (ICM)"
 date: "October 2023"
-output: html_notebook
+output:
+  pdf_document: default
+  html_notebook: default
+  
 ---
 
 # Computer lab III
 
 ### First load the necessary packages.
 ```{r,include=FALSE}
-library(vegan)
 library(tidyverse)
-# library(compositions)
-# library(zCompositions)
-library(PCAtools)
-library(mixOmics)
-library(ape)
-library(recluster)
-library(dendextend)
+library(vegan)
 library(corrplot)
 library(RcmdrMisc)
-library(dplyr)
 library(ggord)
 ```
 

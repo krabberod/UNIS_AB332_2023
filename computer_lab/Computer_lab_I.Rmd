@@ -1,10 +1,10 @@
 ---
 title: "Community ecology - Computer lab I - AB332"
-author: "Ramiro Logares (ICM) and Anders K. Krabberød (UiO)"
+author: "Anders K. Krabberød (UiO) and Ramiro Logares (ICM)"
 date: "October 2023"
 output:
-  html_notebook: default
   pdf_document: default
+  html_notebook: default
 ---
 
 >This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
@@ -255,14 +255,14 @@ Here's an example for those interested:
 
 >Replace zeros (problems with log calculations) with pseudo-counts
 >```{r}
->otu.tab.trans.gbm <- cmultRepl(t(otu.tab.trans), output = "p-counts")
+>otu.tab.trans.gbm <- zCompositions::cmultRepl(t(otu.tab.trans), output = "p-counts")
 >otu.tab.trans.gbm[1:5, 1:5] # We have a look to the replaced values
 >```
 >
 >## centered log-ratio (clr) transformation
 >
 >```{r}
-> otu.tab.trans.gbm.clr <- clr(otu.tab.trans.gbm) # We apply a centered log-ratio (clr) transformation
+> otu.tab.trans.gbm.clr <- compositions::clr(otu.tab.trans.gbm) # We apply a centered log-ratio (clr) transformation
 > otu.tab.trans.gbm.clr[1:5, 1:5] # Values now look different than counts.
 >```
 
