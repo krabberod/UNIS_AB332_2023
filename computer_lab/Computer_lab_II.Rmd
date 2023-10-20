@@ -3,6 +3,8 @@ title: " Community ecology - Computer lab II - AB332"
 author: "Anders K. Krabberød (UiO) and Ramiro Logares (ICM)"
 date: "October 2023"
 output:
+  html_document:
+    df_print: paged
   pdf_document: default
   html_notebook: default
 ---
@@ -21,6 +23,15 @@ Now load the the data from the previous lab (change path to the file if necessar
 load("AB332_lab_I.RData")
 ```
 
+
+# Distance metrics
+Let's calculate the Bray Curtis dissimilarities for the rarefied dataset
+```{r}
+otu.tab.trans.ss.nozero.bray <- vegdist(otu.tab.trans.ss.nozero, method = "bray")
+as.matrix(otu.tab.trans.ss.nozero.bray)[1:5, 1:5]
+```
+ - *What kind of data is the Bray-Curtis dissimilarity suitable for?* 
+ - *How can you change the dissimilarity index in the previous chunk of code?*  
 
 # Ordination and clustering
 
@@ -121,9 +132,10 @@ plot(otu.tab.trans.ss.nozero.bray.upgma$cons) # plot consensus tree
 
 We'll calculate bootstrap support values (0: bad - 100: perfect)
 This allows us to know how well supported is the branching pattern
+The oostrapping function may take a while to run (depending on your computer)
 ```{r}
 otu.tab.trans.ss.nozero.bray.upgma.boot <- recluster.boot(otu.tab.trans.ss.nozero.bray.upgma$cons, otu.tab.trans.ss.nozero, tr = 100, p = 0.5, method = "average", boot = 1000, level = 1)
-recluster.plot(otu.tab.trans.ss.nozero.bray.upgma$cons, otu.tab.trans.ss.nozero.bray.upgma.boot, direction="left") # We add bootstrap values to the branching pattern
+recluster.plot(otu.tab.trans.ss.nozero.bray.upgma$cons, otu.tab.trans.ss.nozero.bray.upgma.boot, direction="right") # We add bootstrap values to the branching pattern
 ```
 
 

@@ -3,21 +3,20 @@ title: "Community ecology - Computer lab I - AB332"
 author: "Anders K. Krabberød (UiO) and Ramiro Logares (ICM)"
 date: "October 2023"
 output:
-  pdf_document: default
   html_notebook: default
+  pdf_document: default
 ---
 
 >This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
->Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*.
+>Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter* (Mac).
 >
->Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+>Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I* (Mac).
 >
->When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file).
+>When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* (Mac) to preview the HTML file).
 >
 >The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
 
 
-It's time for you to try and do the same analysis as was shown in the lecture but using a different dataset: 
 Make sure you have installed all packages!
 
 ### Load Packages
@@ -27,10 +26,10 @@ library(tidyverse)
 ```
 
 
-
 # Starting community ecology analyses
 
 Read the data from the github page:
+https://github.com/krabberod/UNIS_AB332_2023
 ```{r}
 otu.tab <- read_tsv("https://raw.githubusercontent.com/krabberod/UNIS_AB332_2023/main/computer_lab/data/AB332_otutab_reduc3.txt")
 ```
@@ -58,7 +57,7 @@ View(otu.tab)
 
 ```
 
-We can assign OTU-numbers as rownames
+Assign OTU-numbers as rownames
 ```{r}
 otu.tab <- column_to_rownames(otu.tab, var = "OTUNumber")
 ```
@@ -67,9 +66,10 @@ Let's check the names
 ```{r}
 head(rownames(otu.tab))
 dim(otu.tab)
+colnames(otu.tab)
 ```
 
-For simplicity, I have included only 25 samples in the rest of the tutorial. As an exercise, *you should redo the analysis with the full dataset*. I.e. remove the part of the code that selects particular samples in the following chunk.  
+For simplicity, I have included only 25 samples in the rest of the tutorial. As an exercise, *you could redo the analysis with the full dataset*. I.e. remove the part of the code that selects particular samples in the following chunk.  
 This way your numbers will differ from the pdf, and you can also see the effect of a different dataset.s
 ```{r}
 otu.tab.red <- otu.tab[, 6:30]
@@ -129,17 +129,10 @@ Can you find how many OTU's that have more than 10 reads (in total)?
 The following calculations make use of functions in the vegan package written by Jari Oksanen.  
 *Vegan is an R package for community ecologists. It contains the most popular methods of multivariate analysis needed in analyzing ecological communities, and tools for diversity analysis, and other potentially useful functions*. If you want to learn more about the vegan package you can check out the vignette (a form for introduction) by running: ```browseVignettes("vegan")```
 
-### Richness estimations
-Now lets do some ecology: 
-```{r}
-richness <- estimateR(otu.tab.trans)
-richness
-```
-Above we have the estimators Chao and ACE as well as the species number. What do the numbers mean?
 
 ### Rarefaction
 
-Let's calculate the number of reads per sample as reefaction curves:
+Let's calculate the number of reads per sample as rarefaction curves:
 ```{r}
 rowSums(otu.tab.trans)
 rarecurve(otu.tab.trans, step = 100, xlab = "Number of reads", ylab = "Richness", col = "blue")
@@ -153,18 +146,41 @@ plot(accum.curve)
 ```
 What does this curve represent? How do you interpret it?
 
+### Richness estimations
+Now lets do some ecology: 
+
+"The abundance-based estimates in estimateR use counts (numbers of individuals) of species in a single site. If called for a matrix or data frame, the function will give separate estimates for each site. The two variants of extrapolated richness in estimateR are bias-corrected Chao and Abundance-based Coverage Estimator (ACE) (O'Hara 2005, Chiu et al. 2014)." 
+```{r}
+richness <- estimateR(otu.tab.trans, smallsample = TRUE)
+richness
+```
+If you only want to look at one sample
+```{r}
+richness <- estimateR(otu.tab.trans[1,], smallsample = TRUE)
+richness
+```
+
+
+Above we have the estimators Chao and ACE as well as the species number. What do the numbers mean?
+
+
+
 ### Evenness
 ```{r}
 plot(colSums(otu.tab.trans), log = "y", xlab = "Rank", ylab = "Abundance", pch = 19, cex = 0.5, col = "blue")
+plot(sort(colSums(otu.tab.trans), decreasing = TRUE), log = "y", xlab = "Rank", ylab = "Abundance", pch = 19, cex = 0.5, col = "blue")
 ```
 
 ### Fitting rank-abundance distribution models to the data
+
+Function radfit() constructs rank – abundance or dominance / diversity or Whittaker plots and fit brokenstick, preemption, log-Normal, Zipf and Zipf-Mandelbrot models of species abundance.
+
 ```{r}
 mod <- radfit(otu.tab.trans)
 plot(mod)
 ```
 
-
+And for all species 
 ```{r}
 mod.all <- radfit(colSums(otu.tab.trans))
 plot(mod.all)
@@ -185,6 +201,8 @@ veiledspec(preston.dist)
 ```
 
 ### Shannon H index (considers richness and evenness)
+A diversity index taking into account the number of individuals as well as the number of taxa. Varies from 0 for communities with only a single taxon to high values for communities with many taxa, each with few individuals
+
 ```{r}
 H <- diversity(otu.tab.trans, index = "shannon")
 H
@@ -195,11 +213,15 @@ plot(H, type = "l", col = "blue")
 
 `J=H/Hmax`  
 `J=Shannon (H) / log(S=species richness)`
+A calculated value of Pielou's evenness ranges from 0 (no evenness) to 1 (complete evenness).
+  
 ```{r}
 J <- H / log(rowSums(otu.tab.trans > 0))
 ```
 
 ### Inverse Simpson's D index (richness+evenness. Larger values, larger diversity)
+The value of Simpson’s D ranges from 0 to 1, with 0 representing infinite diversity and 1 representing no diversity, so the larger the value of  𝐷 , the lower the diversity. For this reason, Simpson’s index is usually expressed as its inverse
+
 ```{r}
 inv.simpson <- diversity(otu.tab.trans, "invsimpson")
 plot(inv.simpson, type = "l", col = "blue")
@@ -253,28 +275,6 @@ dim(otu.tab.trans.ss.nozero)
 There are other ways to transform and normalise the data, but we will not go into the details in this course. 
 Here's an example for those interested: 
 
->Replace zeros (problems with log calculations) with pseudo-counts
->```{r}
->otu.tab.trans.gbm <- zCompositions::cmultRepl(t(otu.tab.trans), output = "p-counts")
->otu.tab.trans.gbm[1:5, 1:5] # We have a look to the replaced values
->```
->
->## centered log-ratio (clr) transformation
->
->```{r}
-> otu.tab.trans.gbm.clr <- compositions::clr(otu.tab.trans.gbm) # We apply a centered log-ratio (clr) transformation
-> otu.tab.trans.gbm.clr[1:5, 1:5] # Values now look different than counts.
->```
-
-
-# Distance metrics
-Let's calculate the Bray Curtis dissimilarities for the rarefied dataset
-```{r}
-otu.tab.trans.ss.nozero.bray <- vegdist(otu.tab.trans.ss.nozero, method = "bray")
-as.matrix(otu.tab.trans.ss.nozero.bray)[1:5, 1:5]
-```
- - *What kind of data is the Bray-Curtis dissimilarity suitable for?* 
- - *How can you change the dissimilarity index in the previous chunk of code?*  
  
  *Phew* That was Part I. Now before you have a break save the data so it can be loaded if you want to use some of the same data for the next session. This way you don't have to redo all analysis for the next lab.
  

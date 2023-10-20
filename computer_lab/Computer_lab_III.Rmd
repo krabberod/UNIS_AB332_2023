@@ -3,9 +3,9 @@ title: 'Community ecology - Computer lab III - AB332'
 author: "Anders K. Krabberød (UiO) and Ramiro Logares (ICM)"
 date: "October 2023"
 output:
-  pdf_document: default
-  html_notebook: default
   
+  html_notebook: default
+  pdf_document: default
 ---
 
 # Computer lab III
