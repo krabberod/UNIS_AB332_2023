@@ -24,6 +24,7 @@
 # Rdata files
 computer_lab/*.RData
 computer_lab/*.Rproj
+computer_lab/*.html
 
 # produced vignettes
 vignettes/*.html
