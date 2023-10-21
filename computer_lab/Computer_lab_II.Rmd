@@ -3,10 +3,10 @@ title: " Community ecology - Computer lab II - AB332"
 author: "Anders K. Krabberød (UiO) and Ramiro Logares (ICM)"
 date: "October 2023"
 output:
+  html_notebook: default
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
-  html_notebook: default
 ---
 # Computer lab II
 
@@ -132,7 +132,7 @@ plot(otu.tab.trans.ss.nozero.bray.upgma$cons) # plot consensus tree
 
 We'll calculate bootstrap support values (0: bad - 100: perfect)
 This allows us to know how well supported is the branching pattern
-The oostrapping function may take a while to run (depending on your computer)
+The boostrapping function may take a while to run (depending on your computer)
 ```{r}
 otu.tab.trans.ss.nozero.bray.upgma.boot <- recluster.boot(otu.tab.trans.ss.nozero.bray.upgma$cons, otu.tab.trans.ss.nozero, tr = 100, p = 0.5, method = "average", boot = 1000, level = 1)
 recluster.plot(otu.tab.trans.ss.nozero.bray.upgma$cons, otu.tab.trans.ss.nozero.bray.upgma.boot, direction="right") # We add bootstrap values to the branching pattern
