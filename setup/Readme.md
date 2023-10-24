@@ -6,6 +6,9 @@ Everybody should download Rstudio  (https://www.rstudio.com/) and install R (htt
 
 It is also preferable that you have all packages installed before the course starts (see below or [Install_required_packages.R](Install_required_packages.R). For those of you having trouble with installing the packages, we will try to find some time during the first computer lab to get everybody up and running.
 
+**NB Some packages requires administrator access to be installed. If you are working on a computer administered by somebody else (for instance owned by a University) you might have to ask your IT department to either grant you temporary admin rights or help you install the packages**  
+**NB Setting the working directory to a path in One Drive can result in errors and is adviced against, if you have not done it before**
+
 Content of [required packages](Install_required_packages.R):
 
 ```R
@@ -20,7 +23,7 @@ installed.packages()
 # Run these installation commands line-by-line in R (or Rstudio)
 # and answer "yes" if you are asked to update any previously installed pakages:
 # If you are asked if you want to compile from source it is usually easiest to answer "no"
-# install.packages("ggplot2")   # To do plots, included in tidyverse package collection
+install.packages("ggplot2")   # To do plots, included in tidyverse package collection
 install.packages("tidyverse") # To manipulate and visualize data https://www.tidyverse.org/packages/
 install.packages("vegan")     # For ecology analyses
 install.packages("ape")            # Phylogenetic tools
