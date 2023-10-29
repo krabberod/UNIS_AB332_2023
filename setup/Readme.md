@@ -6,8 +6,9 @@ Everybody should download Rstudio  (https://www.rstudio.com/) and install R (htt
 
 It is also preferable that you have all packages installed before the course starts (see below or [Install_required_packages.R](Install_required_packages.R). For those of you having trouble with installing the packages, we will try to find some time during the first computer lab to get everybody up and running.
 
-**NB Some packages requires administrator access to be installed. If you are working on a computer administered by somebody else (for instance owned by a University) you might have to ask your IT department to either grant you temporary admin rights or help you install the packages**  
-**NB Setting the working directory to a path in One Drive can result in errors and is adviced against, if you have not done it before**
+**NB: Some packages requires administrator access to be installed. If you are working on a computer administered by somebody else (for instance owned by a University) you might have to ask your IT department to either grant you temporary admin rights or help you install the packages**    
+
+**NB: Setting the working directory to a path inside a One Drive folder can result in errors and I adviced against doing it unless you have done it before and know that it works**
 
 Content of [required packages](Install_required_packages.R):
 
