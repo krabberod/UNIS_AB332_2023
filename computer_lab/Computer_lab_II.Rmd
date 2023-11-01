@@ -39,7 +39,7 @@ as.matrix(otu.tab.trans.ss.nozero.bray)[1:5, 1:5]
 Pca from the rarefied table
 ```{r}
 otu.tab.trans.ss.nozero.pca <- PCAtools::pca(t(otu.tab.trans.ss.nozero), scale = FALSE) # Runs de PCA
-biplot(otu.tab.trans.ss.nozero.pca, showLoadings = T, lab = rownames(otu.tab.trans.ss.nozero)) # Plots de PCA
+biplot(otu.tab.trans.ss.nozero.pca, showLoadings = T, lab = rownames(otu.tab.trans.ss.nozero)) # Plots the PCA
 screeplot(otu.tab.trans.ss.nozero.pca, axisLabSize = 18, titleLabSize = 22) # We plot the percentage of variance explained by each axis
 ```
 
