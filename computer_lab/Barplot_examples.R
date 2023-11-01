@@ -1,3 +1,10 @@
+# Install packages
+if (!requireNamespace("BiocManager", quietly = TRUE))  install.packages("BiocManager")
+BiocManager::install(c("phyloseq","microbiome"))
+install.packages("RColorBrewer")
+
+#laod packages
+
 library(phyloseq)
 library(microbiome)
 library(RColorBrewer)
