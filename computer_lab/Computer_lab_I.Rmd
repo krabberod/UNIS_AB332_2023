@@ -65,6 +65,7 @@ otu.tab <- column_to_rownames(otu.tab, var = "OTUNumber")
 Let's check the names
 ```{r}
 head(rownames(otu.tab))
+tail(rownames(otu.tab))
 dim(otu.tab)
 colnames(otu.tab)
 ```
@@ -223,7 +224,7 @@ J <- H / log(rowSums(otu.tab.trans > 0))
 The value of Simpson’s D ranges from 0 to 1, with 0 representing infinite diversity and 1 representing no diversity, so the larger the value of  𝐷 , the lower the diversity. For this reason, Simpson’s index is usually expressed as its inverse
 
 ```{r}
-inv.simpson <- diversity(otu.tab.trans, "invsimpson")
+inv.simpson <- diversity(otu.tab.trans, "simpson")
 plot(inv.simpson, type = "l", col = "blue")
 ```
 
@@ -235,6 +236,7 @@ min(rowSums(otu.tab.trans)) # We calculate the sample with the minimum amount of
 
 otu.tab.trans.ss <- rrarefy(otu.tab.trans, min(rowSums(otu.tab.trans))) # Samples are rarefied to lowest number of reads
 rowSums(otu.tab.trans.ss)
+head(colSums(otu.tab.trans.ss))
 ```
 What is the number of reads these samples have been rarified to? What does it imply, do you understand how it is done?
 
