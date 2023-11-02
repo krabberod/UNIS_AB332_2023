@@ -2,7 +2,7 @@
 - The main script is called "cutadapt_paired_primertags.sh"
 - It reads the *batch_file.tx* which can contain multiple sequencing runs and their correpsonding primer pairs with tags
      
-Content of **batch_file.txt***
+Content of **batch_file.txt**
 
 | R1-sequences      | R2-sequences      | FWD primers       | REV Primers       |
 | ----------------- | ----------------- | ----------------- | ----------------- |
