@@ -16,11 +16,11 @@ The R-scripts for the Computer lab are [here](computer_lab/).
 |               |             |                                                                                                 |                     |
 | **Wednesday** | 09:15-12:00 | [Computer lab I](computer_lab/)                                                                 | Anders K. Krabberød |
 |               | 12:15-13:00 | _Lunch break_                                                                                   |                     |
-|               | 13:15-15:00 | NGS-omics examples                                                                              | Ramiro Logares      |
+|               | 13:15-15:00 | [NGS-omics examples](./Lectures/Logares.UNIS.Oct2023.pdf)                                       | Ramiro Logares      |
 |               | 15:15-17:00 | [Computer lab II](computer_lab/)                                                                | Anders K. Krabberød |
 |               |             |                                                                                                 |                     |
 | **Thursday**  | 09:15-12:00 | [Computer lab III](computer_lab/)                                                               | Anders K. Krabberød |
 |               | 12:15-13:00 | _Lunch break_                                                                                   |                     |
-|               | 13:15-15:00 | NGS-omics examples                                                                              | Ramiro Logares      |
+|               | 13:15-15:00 | [NGS-omics examples](./Lectures/Logares.UNIS.Oct2023.pdf)                                       | Ramiro Logares      |
 |               | 15:15-17:00 | Wrap up, Q and A                                                                                | Anders K. Krabberød |
 
