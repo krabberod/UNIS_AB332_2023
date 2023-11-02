@@ -1,9 +1,9 @@
 - Script for running cutadapt on the HPC cluster Saga
 - The main script is called "cutadapt_paired_primertags.sh"
-- It reads the *batch_file.tx* which can contain multiple sequencing runs and their correpsonding primer pairs with tags
+- It reads the *batch_file.tx* which contain an overview of the sequencing files and heir correpsonding primer pairs with tags used for demultplexing
 - The scripts processes sense and anti-sense separately
      
-Content of **batch_file.txt**
+Structure of **batch_file.txt**
 
 | R1-sequences      | R2-sequences      | FWD primers       | REV Primers       |
 | ----------------- | ----------------- | ----------------- | ----------------- |
