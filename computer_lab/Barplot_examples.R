@@ -3,6 +3,9 @@ if (!requireNamespace("BiocManager", quietly = TRUE))  install.packages("BiocMan
 BiocManager::install(c("phyloseq","microbiome"))
 install.packages("RColorBrewer")
 
+install.packages("remotes")
+remotes::install_github("vmikk/metagMisc")
+
 #laod packages
 
 library(phyloseq)
